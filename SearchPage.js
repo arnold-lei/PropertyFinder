@@ -55,35 +55,46 @@ var styles = StyleSheet.create({
         borderColor: '#48BBEC',
         borderRadius: 8,
         color: '#48BBEC'
+    },
+    image: {
+      width: 217,
+      height: 138
     }
 });
 
 class SearchPage extends Component {
-  render() {
-    return (
-        <View style={styles.container}>
-            <Text style={styles.description}>
-                Search for houses to buy!
-            </Text>
-            <Text style={styles.description}>
-                Search by place-name, postcode or search near your location.
-            </Text>
-            <View style={styles.flowRight}>
-                <TextInput
-                style={styles.searchInput}
-                placeholder='Search via name or postcode'/>
-                    <TouchableHighlight style={styles.button}
-                    underlayColor='#99d9f4'>
-                        <Text style={styles.buttonText}>Go</Text>
-                    </TouchableHighlight>
-            </View>
+    constructor(props) {
+      super(props);
+      this.state = {
+        searchString: 'london'
+      };
+    }
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text style={styles.description}>
+                    Search for houses to buy!
+                </Text>
+                <Text style={styles.description}>
+                    Search by place-name, postcode or search near your location.
+                </Text>
+                <View style={styles.flowRight}>
+                    <TextInput
+                    style={styles.searchInput}
+                    placeholder='Search via name or postcode'/>
+                        <TouchableHighlight style={styles.button}
+                        underlayColor='#99d9f4'>
+                            <Text style={styles.buttonText}>Go</Text>
+                        </TouchableHighlight>
+                </View>
                 <TouchableHighlight style={styles.button}
                 underlayColor='#99d9f4'>
                     <Text style={styles.buttonText}>Location</Text>
                 </TouchableHighlight>
-        </View>
-    );
-  }
+                <Image source={require('./Resources/house.png')} style={styles.image}/>
+            </View>
+        );
+    }
 }
 
 module.exports = SearchPage;
