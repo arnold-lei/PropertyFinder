@@ -87,44 +87,47 @@ class SearchPage extends Component {
       super(props);
       this.state = {
         searchString: 'london',
-        isLoading: false,
-        message: ''
+        isLoading: false
       };
     }
     onSearchTextChanged(event) {
-        this.setState({ searchString: event.nativeEvent.text });
+      console.log('onSearchTextChanged');
+      this.setState({ searchString: event.nativeEvent.text });
+      console.log(this.state.searchString);
     }
-    _handleResponse(response) {
-      this.setState({ isLoading: false , message: '' });
-      if (response.application_response_code.substr(0, 1) === '1') {
-        //   this.props.navigator.push({
-        //     title: 'Results',
-        //     component: SearchResults,
-        //     passProps: {listings: response.listings}
-        //   });
-        console.log('Properties found: ' + response.listings.length);
-      } else {
-        this.setState({ message: 'Location not recognized; please try again.'});
-      }
-    }
+    // _handleResponse(response) {
+    //   this.setState({ isLoading: false , message: '' });
+    //   if (response.application_response_code.substr(0, 1) === '1') {
+    //     //   this.props.navigator.push({
+    //     //     title: 'Results',
+    //     //     component: SearchResults,
+    //     //     passProps: {listings: response.listings}
+    //     //   });
+    //     console.log('Properties found: ' + response.listings.length);
+    //   } else {
+    //     this.setState({ message: 'Location not recognized; please try again.'});
+    //   }
+    // }
     _executeQuery(query) {
       console.log(query);
       this.setState({ isLoading: true });
-      fetch(query)
-      .then(response => response.json())
-      .then(json => this._handleResponse(json.response))
-      .catch(error =>
-         this.setState({
-          isLoading: false,
-          message: 'Something bad happened ' + error
-       }));
+    //   fetch(query)
+    //   .then(response => response.json())
+    //   .then(json => this._handleResponse(json.response))
+    //   .catch(error =>
+    //      this.setState({
+    //       isLoading: false,
+    //       message: 'Something bad happened ' + error
+    //    }));
     }
 
     onSearchPressed() {
       var query = urlForQueryAndPage('place_name', this.state.searchString, 1);
       this._executeQuery(query);
     }
+
     render() {
+        console.log('SearchPage.render');
         var spinner = this.state.isLoading ?
           ( <ActivityIndicator
               size='large'/> ) :
@@ -155,7 +158,7 @@ class SearchPage extends Component {
                 </TouchableHighlight>
                 <Image source={require('./Resources/house.png')} style={styles.image}/>
                 {spinner}
-                <Text style={styles.description} > {this.state.message} </Text>
+                {/* <Text style={styles.description} > {this.state.message} </Text> */}
             </View>
         );
     }
