@@ -138,24 +138,24 @@ class SearchPage extends Component {
                     Search by place-name, postcode or search near your location.
                 </Text>
                 <View style={styles.flowRight}>
-                <TextInput
-                  style={styles.searchInput}
-                  value={this.state.searchString}
-                  onChange={this.onSearchTextChanged.bind(this)}
-                  placeholder='Search via name or postcode'/>
-                <TouchableHighlight style={styles.button}
-                    underlayColor='#99d9f4'>
-                    onPress={this.onSearchPressed.bind(this)}
-                    <Text style={styles.buttonText}>Go</Text>
-                </TouchableHighlight>
+                    <TextInput
+                      style={styles.searchInput}
+                      value={this.state.searchString}
+                      onChange={this.onSearchTextChanged.bind(this)}
+                      placeholder='Search via name or postcode'/>
+                    <TouchableHighlight style={styles.button}
+                        underlayColor='#99d9f4'>
+                        onPress={this.onSearchPressed.bind(this)}
+                        <Text style={styles.buttonText}>Go</Text>
+                    </TouchableHighlight>
                 </View>
                 <TouchableHighlight style={styles.button}
-                underlayColor='#99d9f4'>
+                    underlayColor='#99d9f4'>
                     <Text style={styles.buttonText}>Location</Text>
                 </TouchableHighlight>
                 <Image source={require('./Resources/house.png')} style={styles.image}/>
                 {spinner}
-                <Text style={styles.description}>{this.state.message}</Text>
+                <Text style={styles.description} > {this.state.message} </Text>
             </View>
         );
     }
