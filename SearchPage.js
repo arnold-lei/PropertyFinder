@@ -111,6 +111,7 @@ class SearchPage extends Component {
           });
         });
     }
+    
     _executeQuery(query) {
       console.log(query);
       this.setState({ isLoading: true });
